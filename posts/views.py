@@ -19,5 +19,20 @@ def post_detail(request,post_id):
         }
     return render(request,'posts/post_detail.html',context)
 
-    
+'''
+def post_list(request):
 
+    data = Post.objects.all()                              :query
+    context={'data': data}                                 :content
+    return render(request,'posts/post_list.html',context)  : template
+    
+'''    
+
+from django.views.generic import ListView , DeleteView
+
+class PostList(ListView):                  # context: post_list, object_list
+
+    model = Post                           #template model_action =post_list
+
+class PostDetail(DeleteView):   # context: post , object
+    model = Post                # template name : post_detail(name of model + detail)
