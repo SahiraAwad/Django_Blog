@@ -4,6 +4,11 @@ from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 
 # Create your models here.
+
+
+class Category(models.Model):
+     name = models.CharField(max_length= 100)
+
 class Post(models.Model):
 
     author = models.ForeignKey(User, related_name='post_author',on_delete= models.CASCADE)
@@ -15,6 +20,10 @@ class Post(models.Model):
     #publish_date2= models.DateTimeField(auto_now = True) 
     tags = TaggableManager()
     image = models.ImageField(upload_to='post')
-
+    category = models.ForeignKey(Category,related_name='post_category',on_delete= models.SET_NULL,null= True)
     def __str__(self):
          return self.title
+
+
+
+
