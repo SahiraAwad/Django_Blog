@@ -8,8 +8,9 @@ class Post(models.Model):
     content = models.TextField(max_length= 1000)
     draft = models.BooleanField(default=True)
     publish_date = models.DateTimeField(default=timezone.now)
-    
+    #publish_date2= models.DateTimeField(auto_now = True) 
     tags = TaggableManager()
+    image = models.ImageField(upload_to='post')
 
     def __str__(self):
          return self.title
