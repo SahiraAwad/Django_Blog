@@ -67,7 +67,7 @@ def post_list(request):
     
 '''    
 
-from django.views.generic import ListView , DeleteView
+from django.views.generic import ListView , DeleteView , CreateView, UpdateView, DetailView
 
 class PostList(ListView):                  # context: post_list, object_list
 
@@ -75,3 +75,21 @@ class PostList(ListView):                  # context: post_list, object_list
 
 class PostDetail(DeleteView):   # context: post , object
     model = Post                # template name : post_detail(name of model + detail)
+
+
+class AddPost(CreateView):
+    model=Post
+    fields = '__all__'   
+    success_url = '/posts/'
+
+class EditPost(UpdateView):
+    model=Post
+    fields = '__all__'   
+    success_url = '/posts/' 
+    template_name = 'posts/edit.html'   
+
+
+
+
+
+    
