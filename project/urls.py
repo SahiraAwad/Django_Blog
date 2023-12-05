@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from posts.views import post_list, post_detail, create_post,PostList, PostDetail
+from posts.views import post_list, post_detail, create_post,edit_post,PostList, PostDetail
 from django.urls import include
 
 urlpatterns = [
@@ -29,6 +29,7 @@ urlpatterns = [
     #path('posts/', PostList.as_view()),
     
     #path('posts/<int:post_id>', PostDetail.as_view()),
+    path('posts/<int:pk>/edit', edit_post),
     path('summernote/', include('django_summernote.urls')),
 
 ]
